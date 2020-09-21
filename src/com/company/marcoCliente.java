@@ -3,9 +3,9 @@ package com.company;
 import javax.swing.*;
 import java.awt.*;
 
-class miMarco extends JFrame {
+class marcoCliente extends JFrame {
 
-    public miMarco(){
+    public marcoCliente(){
 
         Toolkit mipantalla = Toolkit.getDefaultToolkit();
 
@@ -15,17 +15,19 @@ class miMarco extends JFrame {
 
         int anchoPantalla = tamanoPantalla.width;
 
-        setSize(anchoPantalla/2,alturaPantalla/2);
+        setSize(1000,600);
 
-        setLocation(anchoPantalla/4,alturaPantalla/4);
+        setLocation(anchoPantalla/8,alturaPantalla/8);
 
         setTitle("Ventana Cliente");
 
         setResizable(false);
 
-        Lamina milanima = new Lamina();
+        laminaCliente milanima = new laminaCliente();
 
         add(milanima);
+
+        milanima.setBackground(Color.GRAY);
 
     }
 }

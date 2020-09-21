@@ -1,13 +1,12 @@
 package com.company;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Cliente {
 
     public static void main(String[] args) {
 
-        miMarco marco1 = new miMarco();
+        marcoCliente marco1 = new marcoCliente();
 
         marco1.setVisible(true);
 
