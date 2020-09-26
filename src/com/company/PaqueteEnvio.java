@@ -1,6 +1,8 @@
 package com.company;
 
-public class PaqueteEnvio {
+import java.io.*;
+
+public class PaqueteEnvio implements Serializable { //Serializar: Se convierten los datos en bytes
 
     private String nick, ip, mensaje;
 

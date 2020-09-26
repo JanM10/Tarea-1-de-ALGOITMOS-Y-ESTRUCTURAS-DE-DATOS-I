@@ -57,6 +57,12 @@ class laminaCliente extends JPanel {
 
                 datos.setMensaje(campo1.getText()); //Se almacena el mensaje o texto enviado
 
+                ObjectOutputStream paquete_con_datos = new ObjectOutputStream(misocket.getOutputStream()); //Flujo de
+                // salida para enviar todos los datos
+                paquete_con_datos.writeObject(datos);
+
+                misocket.close();
+
             } catch (IOException ioException) {
 
                 System.out.println(ioException.getMessage());

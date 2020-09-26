@@ -37,15 +37,15 @@ public class marcoServidor extends JFrame implements Runnable {
         try {
             ServerSocket servidor = new ServerSocket(5000); //Esta a la esucha y abre el puerto indicado
 
+            String nick, ip, mensaje;
+
+            PaqueteEnvio paquete_recivido;
+
             while (true) {
                 //servidor.accept(): las conecciones que vienen del exterior
                 Socket misocket = servidor.accept();
-                //DataInputStream: entra la informacion recivida
-                DataInputStream flujo_entrada = new DataInputStream(misocket.getInputStream());
-                //mensaje_texto: se almacena el mensaje enviado
-                String mensaje_texto = flujo_entrada.readUTF();
-                //Se hace un salto de linea y luego se ensena lo que que estaba almacenado en mensaje_teexto
-                areatexto.append("\n" + mensaje_texto);
+
+                ObjectInputStream paquete_con_datos = new ObjectInputStream(misocket.getInputStream());
 
                 misocket.close();
             }
