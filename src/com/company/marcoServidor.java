@@ -47,10 +47,20 @@ public class marcoServidor extends JFrame implements Runnable {
 
                 ObjectInputStream paquete_con_datos = new ObjectInputStream(misocket.getInputStream());
 
+                paquete_recivido = (PaqueteEnvio) paquete_con_datos.readObject();
+
+                nick = paquete_recivido.getNick();
+
+                ip = paquete_recivido.getIp();
+
+                mensaje = paquete_recivido.getMensaje();
+
+                areatexto.append("\n" + nick + ": " + mensaje + "para " + ip);
+
                 misocket.close();
             }
 
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
