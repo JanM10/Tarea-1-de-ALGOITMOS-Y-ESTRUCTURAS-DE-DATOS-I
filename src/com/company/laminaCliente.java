@@ -48,12 +48,14 @@ class laminaCliente extends JPanel {
             //Lo que esta en el campo1 se escribe en el flujo_salida y esto se dirije a misocket
             try {
                 Socket misocket = new Socket("127.0.0.1", 5000);
-                //En el DataOutputStream sale la informacion escrita por el cliente
-                DataOutputStream flujo_salida = new DataOutputStream(misocket.getOutputStream());
 
-                flujo_salida.writeUTF(campo1.getText());
+                PaqueteEnvio datos = new PaqueteEnvio();
 
-                flujo_salida.close();
+                datos.setNick(nick.getText()); //Se almacena el nombre de usuario
+
+                datos.setIp(ip.getText()); //Se almacena la ip
+
+                datos.setMensaje(campo1.getText()); //Se almacena el mensaje o texto enviado
 
             } catch (IOException ioException) {
 
