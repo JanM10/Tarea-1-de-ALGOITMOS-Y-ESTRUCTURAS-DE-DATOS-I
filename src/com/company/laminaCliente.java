@@ -10,15 +10,27 @@ class laminaCliente extends JPanel {
 
     public laminaCliente(){
 
+        campochat = new JTextArea(20,95); //Aqui van a apoarecer todos los mensajes
+
+        add(campochat);
+
+        nick = new JTextField(5); //Una entrada para poner nombre de usuario
+
+        add(nick);
+
         JLabel texto = new JLabel("CLIENTE");
 
         add(texto);
+
+        ip = new JTextField(8); //Una entrada para especificar el ip en este caso 127.0.0.1(local)
+
+        add(ip);
 
         campo1 = new JTextField(20);
 
         add(campo1);
 
-        miboton = new JButton("Enviar");
+        miboton = new JButton("Enviar"); //Un boton para enviar los mensajes
 
         EnviarTexto mievento = new EnviarTexto();
 
@@ -50,7 +62,9 @@ class laminaCliente extends JPanel {
         }
     }
 
-    private JTextField campo1;
+    private JTextField campo1, nick, ip;
+
+    private JTextArea campochat;
 
     private JButton miboton;
 }
