@@ -14,17 +14,29 @@ class laminaCliente extends JPanel implements Runnable {
 
         add(campochat);
 
-        nick = new JTextField(5); //Una entrada para poner nombre de usuario
+        String nick_usuario = JOptionPane.showInputDialog("Nombre de usuario: ");
+
+        JLabel n_nick = new JLabel("Nombre: ");
+
+        add(n_nick);
+
+        nick = new JLabel(); //Una entrada para poner nombre de usuario
+
+        nick.setText(nick_usuario);
 
         add(nick);
 
-        JLabel texto = new JLabel("CLIENTE");
+        JLabel inserte_ip = new JLabel("Ip: ");
 
-        add(texto);
+        add(inserte_ip);
 
         ip = new JTextField(8); //Una entrada para especificar el ip en este caso 127.0.0.1(local)
 
         add(ip);
+
+        JLabel mensaje_de_texto = new JLabel("Mensaje: ");
+
+        add(mensaje_de_texto);
 
         campo1 = new JTextField(20);
 
@@ -62,6 +74,10 @@ class laminaCliente extends JPanel implements Runnable {
 
                 paqueteRecibido = (PaqueteEnvio) flujoentrada.readObject();
 
+                if (campo1.getText().equals("")){
+                    System.out.println("De escribir algo");
+                }
+
                 campochat.append("\n " + paqueteRecibido.getNick() + ": " + paqueteRecibido.getMensaje());
             }
 
@@ -75,8 +91,7 @@ class laminaCliente extends JPanel implements Runnable {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            //System.out.println(campo1.getText());
-            //Lo que esta en el campo1 se escribe en el flujo_salida y esto se dirije a misocket
+            campochat.append("\n" + campo1.getText());
             try {
                 Socket misocket = new Socket("127.0.0.1", 5000);
 
@@ -101,7 +116,9 @@ class laminaCliente extends JPanel implements Runnable {
         }
     }
 
-    private JTextField campo1, nick, ip;
+    private JTextField campo1, ip;
+
+    private JLabel nick;
 
     private JTextArea campochat;
 
