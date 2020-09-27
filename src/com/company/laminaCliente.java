@@ -6,7 +6,7 @@ import java.awt.event.*;
 import java.io.*;
 import java.net.*;
 
-class laminaCliente extends JPanel {
+class laminaCliente extends JPanel implements Runnable {
 
     public laminaCliente(){
 
@@ -37,6 +37,37 @@ class laminaCliente extends JPanel {
         miboton.addActionListener(mievento);
 
         add(miboton);
+
+        Thread mihilo = new Thread(this);
+
+        mihilo.start();
+    }
+
+    @Override
+    public void run() {
+
+        try{
+
+            ServerSocket servidor_cliente = new ServerSocket(5001);
+
+            Socket cliente;
+
+            PaqueteEnvio paqueteRecibido;
+
+            while (true){
+
+                cliente = servidor_cliente.accept();
+
+                ObjectInputStream flujoentrada = new ObjectInputStream(cliente.getInputStream());
+
+                paqueteRecibido = (PaqueteEnvio) flujoentrada.readObject();
+
+                campochat.append("\n " + paqueteRecibido.getNick() + ": " + paqueteRecibido.getMensaje());
+            }
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private class EnviarTexto implements ActionListener {

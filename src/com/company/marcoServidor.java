@@ -55,7 +55,17 @@ public class marcoServidor extends JFrame implements Runnable {
 
                 mensaje = paquete_recivido.getMensaje();
 
-                areatexto.append("\n" + nick + ": " + mensaje + "para " + ip);
+                areatexto.append("\n" + nick + ": " + mensaje + "para " + ip);//Se escribe la infromacion que venia en
+                //el paquete dentro del chat
+
+                Socket enviaDestinatario = new Socket(ip, 5001);//Un puente de comunicacion entre datos
+
+                ObjectOutputStream paqueteReenvio = new ObjectOutputStream(enviaDestinatario.getOutputStream());
+                //Reenvia la infromacion dentro de un paquete 
+
+                paqueteReenvio.writeObject(paquete_recivido);
+
+                enviaDestinatario.close();
 
                 misocket.close();
             }
