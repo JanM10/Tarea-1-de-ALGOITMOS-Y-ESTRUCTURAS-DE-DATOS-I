@@ -3,7 +3,10 @@ package com.company;
 import javax.swing.*;
 
 public class Cliente {
-
+    /***
+     * Esta es la funcion principal para que el programa funcione
+     * @param args
+     */
     public static void main(String[] args) {
 
         marcoCliente marco1 = new marcoCliente();

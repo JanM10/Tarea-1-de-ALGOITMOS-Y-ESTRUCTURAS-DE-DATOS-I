@@ -7,7 +7,9 @@ import java.io.*;
 import java.net.*;
 
 class laminaCliente extends JPanel implements Runnable {
-
+    /***
+     * En la lamina se agregan los JTextArea, JButton y Jlabel para que el usario puede intecatuar con ellos
+     */
     public laminaCliente(){
 
         campochat = new JTextArea(20,95); //Aqui van a apoarecer todos los mensajes
@@ -90,7 +92,7 @@ class laminaCliente extends JPanel implements Runnable {
 
     private class EnviarTexto implements ActionListener {
         /***
-         * En esta clase se crea un scoket y se empaqueta la infromacion que se va a enviar
+         * En esta funcion se crea un scoket y se empaqueta la infromacion que se va a enviar
          * @param e aqui se recive un objeto de tipo ActionListener
          */
         @Override

@@ -8,7 +8,9 @@ import java.net.ServerSocket;
 
 
 public class marcoServidor extends JFrame implements Runnable {
-
+    /***
+     * Se crean las visuales del servidor
+     */
     public marcoServidor() {
 
         setBounds(1200,300,280,350);
@@ -31,7 +33,7 @@ public class marcoServidor extends JFrame implements Runnable {
     }
 
     /***
-     *
+     * En esta funcion el servidor se pone a la escucha y recive mensajes de los clientes
      */
     @Override
     public void run() {

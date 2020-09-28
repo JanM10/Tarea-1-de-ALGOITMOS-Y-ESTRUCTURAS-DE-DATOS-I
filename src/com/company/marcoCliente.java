@@ -4,7 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 class marcoCliente extends JFrame {
-
+    /***
+     * En esta funcion se definen los parametros de la ventana del cliente y se crea una lamina
+     */
     public marcoCliente(){
 
         Toolkit mipantalla = Toolkit.getDefaultToolkit();
