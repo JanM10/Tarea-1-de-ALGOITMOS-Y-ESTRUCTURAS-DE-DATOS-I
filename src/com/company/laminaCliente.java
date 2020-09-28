@@ -20,6 +20,10 @@ class laminaCliente extends JPanel implements Runnable {
 
         JLabel n_nick = new JLabel("Nombre: ");
 
+        if (n_nick.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Debe escribir un nombre");
+        } else
+
         add(n_nick);
 
         nick = new JLabel(); //Una entrada para poner nombre de usuario
@@ -102,7 +106,7 @@ class laminaCliente extends JPanel implements Runnable {
                 JOptionPane.showMessageDialog(null, "Debe escribir algo");
             } else{
                 try {
-                    Socket misocket = new Socket("192.168.100.31", 5000);
+                    Socket misocket = new Socket("127.0.0.1", 5000);
 
                     PaqueteEnvio datos = new PaqueteEnvio();
 

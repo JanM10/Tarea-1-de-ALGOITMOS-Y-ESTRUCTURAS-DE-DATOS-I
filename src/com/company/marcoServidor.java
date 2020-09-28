@@ -63,7 +63,6 @@ public class marcoServidor extends JFrame implements Runnable {
                 mensaje = paquete_recivido.getMensaje();
 
                 areatexto.append("\n" + nick + ": " + mensaje + " para " + ip);
-
                 //Se escribe la infromacion que venia en
                 //el paquete dentro del chat
 
@@ -86,5 +85,5 @@ public class marcoServidor extends JFrame implements Runnable {
         }
     }
 
-    private final JTextArea areatexto;
+    public static JTextArea areatexto;
 }
