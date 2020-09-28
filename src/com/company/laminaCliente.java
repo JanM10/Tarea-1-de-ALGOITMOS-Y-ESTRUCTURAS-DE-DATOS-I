@@ -66,7 +66,9 @@ class laminaCliente extends JPanel implements Runnable {
 
             PaqueteEnvio paqueteRecibido;
 
-            while (true){
+            boolean flag = true;
+
+            while (flag){
 
                 cliente = servidor_cliente.accept();
 
@@ -74,11 +76,9 @@ class laminaCliente extends JPanel implements Runnable {
 
                 paqueteRecibido = (PaqueteEnvio) flujoentrada.readObject();
 
-                if (campo1.getText().equals("")){
-                    System.out.println("De escribir algo");
-                }
 
                 campochat.append("\n " + paqueteRecibido.getNick() + ": " + paqueteRecibido.getMensaje());
+
             }
 
         }catch (Exception e){
@@ -91,28 +91,33 @@ class laminaCliente extends JPanel implements Runnable {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            campochat.append("\n" + campo1.getText());
-            try {
-                Socket misocket = new Socket("127.0.0.1", 5000);
 
-                PaqueteEnvio datos = new PaqueteEnvio();
+            if (campo1.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Debe escribir algo");
+            } else{
+                try {
+                    Socket misocket = new Socket("192.168.100.31", 5000);
 
-                datos.setNick(nick.getText()); //Se almacena el nombre de usuario
+                    PaqueteEnvio datos = new PaqueteEnvio();
 
-                datos.setIp(ip.getText()); //Se almacena la ip
+                    datos.setNick(nick.getText()); //Se almacena el nombre de usuario
 
-                datos.setMensaje(campo1.getText()); //Se almacena el mensaje o texto enviado
+                    datos.setIp(ip.getText()); //Se almacena la ip
 
-                ObjectOutputStream paquete_con_datos = new ObjectOutputStream(misocket.getOutputStream()); //Flujo de
-                // salida para enviar todos los datos
-                paquete_con_datos.writeObject(datos);
+                    datos.setMensaje(campo1.getText()); //Se almacena el mensaje o texto enviado
 
-                misocket.close();
+                    ObjectOutputStream paquete_con_datos = new ObjectOutputStream(misocket.getOutputStream()); //Flujo de
+                    // salida para enviar todos los datos
+                    paquete_con_datos.writeObject(datos);
 
-            } catch (IOException ioException) {
+                    misocket.close();
 
-                System.out.println(ioException.getMessage());
+                } catch (IOException ioException) {
+
+                    System.out.println(ioException.getMessage());
+                }
             }
+
         }
     }
 

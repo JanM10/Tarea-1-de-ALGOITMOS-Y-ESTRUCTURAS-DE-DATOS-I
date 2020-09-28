@@ -41,7 +41,9 @@ public class marcoServidor extends JFrame implements Runnable {
 
             PaqueteEnvio paquete_recivido;
 
-            while (true) {
+            boolean flag = true;
+
+            while (flag) {
                 //servidor.accept(): las conecciones que vienen del exterior
                 Socket misocket = servidor.accept();
 
@@ -55,7 +57,9 @@ public class marcoServidor extends JFrame implements Runnable {
 
                 mensaje = paquete_recivido.getMensaje();
 
-                areatexto.append("\n" + nick + ": " + mensaje + " para " + ip);//Se escribe la infromacion que venia en
+                areatexto.append("\n" + nick + ": " + mensaje + " para " + ip);
+
+                //Se escribe la infromacion que venia en
                 //el paquete dentro del chat
 
                 Socket enviaDestinatario = new Socket(ip, 5001);//Un puente de comunicacion entre datos
