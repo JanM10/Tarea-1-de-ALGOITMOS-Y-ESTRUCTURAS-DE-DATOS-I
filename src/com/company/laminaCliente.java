@@ -55,6 +55,9 @@ class laminaCliente extends JPanel implements Runnable {
         mihilo.start();
     }
 
+    /***
+     * Aqui el socket recibe un paquete con informacion y se escribe en el JTextArea llamado campochat
+     */
     @Override
     public void run() {
 
@@ -76,7 +79,6 @@ class laminaCliente extends JPanel implements Runnable {
 
                 paqueteRecibido = (PaqueteEnvio) flujoentrada.readObject();
 
-
                 campochat.append("\n " + paqueteRecibido.getNick() + ": " + paqueteRecibido.getMensaje());
 
             }
@@ -87,10 +89,12 @@ class laminaCliente extends JPanel implements Runnable {
     }
 
     private class EnviarTexto implements ActionListener {
-
+        /***
+         * En esta clase se crea un scoket y se empaqueta la infromacion que se va a enviar
+         * @param e aqui se recive un objeto de tipo ActionListener
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
-
 
             if (campo1.getText().equals("")){
                 JOptionPane.showMessageDialog(null, "Debe escribir algo");

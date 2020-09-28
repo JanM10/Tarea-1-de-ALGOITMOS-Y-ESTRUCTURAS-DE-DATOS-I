@@ -30,6 +30,9 @@ public class marcoServidor extends JFrame implements Runnable {
         mihilo.start();
     }
 
+    /***
+     *
+     */
     @Override
     public void run() {
         System.out.println("Estoy a la escucha");
